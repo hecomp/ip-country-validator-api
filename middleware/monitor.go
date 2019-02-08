@@ -8,6 +8,7 @@ import (
 	"os"
 )
 
+// LoggingMonitorService return a service configured with logging and metrics performance
 func LoggingMonitorService() service.IpCountryService {
 	var logger log.Logger
 	logger = log.NewLogfmtLogger(log.NewSyncWriter(os.Stderr))
@@ -19,6 +20,7 @@ func LoggingMonitorService() service.IpCountryService {
 	ics = service.IpCountryValidatorService{}
 	ics = NewLoggingService(log.With(logger, "component", "ip-country-validator"), ics)
 	ics = NewInstrumentingMiddleware(
+		// Logic and performance diagnoses setup
 		kitprometheus.NewCounterFrom(stdprometheus.CounterOpts{
 			Namespace: "ip_country_validator_api",
 			Subsystem: "ip_country_validator_service",

@@ -16,8 +16,9 @@ var (
 	ErrBadRequest = errors.New("Bad Request")
 )
 
+// IndicatorResponse define response structs
 type IndicatorResponse struct {
-	IsListed bool   `json:"isListed"`
+	IsListed bool   `json:"isListed,omitempty"`
 	Err      string `json:"err,omitempty"`
 }
 

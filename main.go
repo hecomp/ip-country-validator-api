@@ -19,6 +19,7 @@ func main() {
 
 	config := new(configuration)
 	json.NewDecoder(file).Decode(config)
+	// Start the server on port config.json
 	log.Println("Starting web server on address ", config.ServerAddress)
 	ipcountryapi.RunIpCountryApi(config.ServerAddress)
 }

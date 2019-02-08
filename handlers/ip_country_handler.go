@@ -6,8 +6,11 @@ import (
 	"github.com/hecomp/ipCountryValidatorApi/transport"
 )
 
+//
 var ipSvc  = middleware.LoggingMonitorService()
 
+// PostValidateIpCountryHandler expose the service to the network.
+// httptransport act as a handler
 var (
 	PostValidateIpCountryHandler = httptransport.NewServer(
 		transport.MakePostValidateIpCountry(ipSvc),

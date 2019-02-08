@@ -1,6 +1,6 @@
 package models
 
 type Country struct {
-	Ip     string  `json:"ip"`
-	Name   string `json:"name"`
+	Ip     string  `json:"ip,omitempty"`
+	Name   string `json:"name,omitempty"`
 }

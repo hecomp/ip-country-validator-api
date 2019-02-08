@@ -6,10 +6,12 @@ import (
 	"github.com/hecomp/ipCountryValidatorApi/models"
 )
 
+// IpCountryService provides operations on ip/country validation.
 type IpCountryService interface {
 	ValidateIpCountry(client models.GatewayClient) (bool, error)
 }
 
+// ErrEmpty is returned when an input ip & countries is empty.
 var (
 	ErrEmpty = errors.New("empty gatewayclient")
 )

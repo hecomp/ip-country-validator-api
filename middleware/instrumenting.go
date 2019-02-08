@@ -14,6 +14,7 @@ type InstrumentingMiddleware struct {
 	Service service.IpCountryService
 }
 
+// NewInstrumentingMiddleware returns a new instance of IpCountryService with metrics counter and histogram
 func NewInstrumentingMiddleware(counter metrics.Counter, latency metrics.Histogram, s service.IpCountryService) service.IpCountryService {
 	return &InstrumentingMiddleware{
 		RequestCount:   counter,
@@ -22,6 +23,7 @@ func NewInstrumentingMiddleware(counter metrics.Counter, latency metrics.Histogr
 	}
 }
 
+// ValidateIpCountry returns `isListed` indicator or error
 func (s InstrumentingMiddleware) ValidateIpCountry(client models.GatewayClient) (isListed bool, err error) {
 	defer func (begin time.Time) {
 		lvs := []string{"method", "ValidateIpCountry", "error", fmt.Sprint(err)}
